@@ -1,0 +1,2 @@
+- Nếu người dùng chọn "Cancel", hệ thống sẽ mặc định xử lý như một lựa chọn phủ định và hiển thị thông báo: "You've chosen: No".
+- Để chỉ hiển thị hai tùy chọn "Yes" và "No": Ta cần thay đổi kiểu tham số optionType trong hàm showConfirmDialog thành JOptionPane.YES_NO_OPTION. Thay đổi này sẽ loại bỏ nút "Cancel" mặc định. Để tùy chỉnh nhãn nút thành "I do" và "I don't": Ta nên sử dụng phương thức showOptionDialog. Phương thức này cho phép truyền vào một mảng các chuỗi ký tự để định nghĩa chính xác tên hiển thị trên các nút bấm.
