@@ -1,0 +1,23 @@
+1. If you create a constructor method to build a DVD by title, then create another constructor method to build a DVD by category, does Java allow you to do this?
+
+Không. Java không cho phép nếu cả hai constructor đều chỉ có một tham số kiểu String.
+Ví dụ:
+- DigitalVideoDisc(String title)
+- DigitalVideoDisc(String category)
+
+Hai constructor này có cùng chữ ký hàm vì Java phân biệt overloading dựa trên số lượng tham số, kiểu tham số và thứ tự tham số, chứ không dựa vào tên biến. Vì vậy chúng sẽ bị trùng nhau.
+
+2. Is Java a Pass by Value or a Pass by Reference programming language?
+
+Java luôn là ngôn ngữ truyền tham số theo cơ chế pass by value.
+Đối với object, Java không truyền trực tiếp object hay reference gốc, mà truyền một bản sao của reference đó.
+
+3. After the call of swap(jungleDVD, cinderellaDVD), why do the titles of these two objects still remain?
+
+Sau khi gọi swap(jungleDVD, cinderellaDVD), tiêu đề của hai object vẫn giữ nguyên vì hàm swap chỉ hoán đổi các bản sao của reference ở bên trong hàm.
+Reference gốc ở hàm main không bị thay đổi, nên jungleDVD vẫn trỏ tới object “Jungle” và cinderellaDVD vẫn trỏ tới object “Cinderella”.
+
+4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()), why is the title of jungleDVD changed?
+
+Vì trong hàm changeTitle, tham số dvd vẫn là một bản sao của reference nhưng nó vẫn trỏ tới đúng object mà jungleDVD đang trỏ tới.
+Khi gọi setTitle, chương trình thay đổi trạng thái bên trong của object đó, nên title của jungleDVD bị đổi thành “Cinderella”.
