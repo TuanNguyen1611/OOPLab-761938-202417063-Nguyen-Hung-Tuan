@@ -7,18 +7,13 @@ public class Aims {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc(
                 "Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc(
-                "Aladin", "Animation", "Unknown", 18.99f);
+                "Aladin", "Animation", "Unknown", 90, 18.99f);
 
-        anOrder.addDigitalVideoDisc(dvd1);
-        anOrder.addDigitalVideoDisc(dvd2);
-        anOrder.addDigitalVideoDisc(dvd3);
+        anOrder.addDigitalVideoDisc(dvd1, dvd2);
 
-        System.out.println("Cart after adding:");
-        anOrder.print();
+        DigitalVideoDisc[] dvdList = {dvd3};
+        anOrder.addDigitalVideoDisc(dvdList);
 
-        anOrder.removeDigitalVideoDisc(dvd2);
-
-        System.out.println("Cart after removing:");
         anOrder.print();
     }
 }
