@@ -1,30 +1,37 @@
 package hust.soict.hedspi.test.cart;
 
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.CompactDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Track;
 
 public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc(
+        DigitalVideoDisc dvd = new DigitalVideoDisc(
                 "The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        cart.addDigitalVideoDisc(dvd1);
 
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc(
-                "Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        cart.addDigitalVideoDisc(dvd2);
+        Book book = new Book(1, "Java Basic", "Programming", 15.5f);
+        book.addAuthor("Author A");
 
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc(
-                "Aladdin", "Animation", 18.99f);
-        cart.addDigitalVideoDisc(dvd3);
+        CompactDisc cd = new CompactDisc(
+                "Greatest Hits", "Music", 18.0f, "Director X", "Artist Y");
+        cd.addTrack(new Track("Track 1", 4));
+        cd.addTrack(new Track("Track 2", 5));
+
+        cart.addMedia(dvd);
+        cart.addMedia(book);
+        cart.addMedia(cd);
 
         cart.print();
 
-        cart.searchById(dvd2.getId());
-        cart.searchById(100);
+        cart.searchById(dvd.getId());
+        cart.searchByTitle("Java");
 
-        cart.searchByTitle("Star");
-        cart.searchByTitle("Harry Potter");
+        cart.playMedia(dvd);
+        cart.playMedia(cd);
+        cart.playMedia(book);
     }
 }

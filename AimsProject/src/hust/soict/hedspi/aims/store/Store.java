@@ -1,51 +1,52 @@
 package hust.soict.hedspi.aims.store;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import java.util.ArrayList;
+
+import hust.soict.hedspi.aims.media.Media;
 
 public class Store {
-    public static final int MAX_ITEMS_IN_STORE = 100;
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    private DigitalVideoDisc[] itemsInStore = new DigitalVideoDisc[MAX_ITEMS_IN_STORE];
-    private int qtyInStore = 0;
+    public Store() {
+    }
 
-    public void addDVD(DigitalVideoDisc disc) {
-        if (qtyInStore < MAX_ITEMS_IN_STORE) {
-            itemsInStore[qtyInStore] = disc;
-            qtyInStore++;
-            System.out.println("The disc has been added to the store.");
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
+    public void addMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            System.out.println("The media is already in the store.");
         } else {
-            System.out.println("The store is full.");
+            itemsInStore.add(media);
+            System.out.println("The media has been added to the store.");
         }
     }
 
-    public void removeDVD(DigitalVideoDisc disc) {
-        boolean found = false;
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println("The media has been removed from the store.");
+        } else {
+            System.out.println("The media was not found in the store.");
+        }
+    }
 
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i] == disc) {
-                found = true;
-
-                for (int j = i; j < qtyInStore - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];
-                }
-
-                itemsInStore[qtyInStore - 1] = null;
-                qtyInStore--;
-                System.out.println("The disc has been removed from the store.");
-                break;
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle() != null &&
+                    media.getTitle().equalsIgnoreCase(title)) {
+                return media;
             }
         }
-
-        if (!found) {
-            System.out.println("The disc was not found in the store.");
-        }
+        return null;
     }
 
     public void printStore() {
         System.out.println("***********************STORE***********************");
         System.out.println("Items in store:");
-        for (int i = 0; i < qtyInStore; i++) {
-            System.out.println((i + 1) + ". " + itemsInStore[i].toString());
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
         }
         System.out.println("***************************************************");
     }

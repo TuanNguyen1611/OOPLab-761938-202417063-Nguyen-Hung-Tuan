@@ -1,0 +1,45 @@
+4. What class should implement the Comparable interface?
+
+Nếu dùng Comparable thì lớp phù hợp nhất để implement là lớp Media, vì đây là lớp cha chung của các loại media như Book, DigitalVideoDisc, CompactDisc. Khi đó ta có thể so sánh các đối tượng media với nhau theo một quy tắc mặc định.
+
+5. In those classes, how should you implement the compareTo() method to reflect the ordering that we want?
+
+Nếu dùng Comparable trong lớp Media, ta phải chọn một quy tắc sắp xếp mặc định duy nhất.
+
+Ví dụ:
+- Nếu chọn sắp xếp theo title rồi đến cost thì compareTo() sẽ:
+  + so sánh title trước
+  + nếu title giống nhau thì so sánh cost
+
+Hoặc:
+- Nếu chọn sắp xếp theo cost rồi đến title thì compareTo() sẽ:
+  + so sánh cost trước
+  + nếu cost bằng nhau thì so sánh title
+
+Nói cách khác, compareTo() chỉ thể hiện được một quy tắc sắp xếp chính.
+
+6. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+
+Không thuận tiện. Nếu dùng Comparable thì mỗi lớp chỉ nên có một thứ tự tự nhiên (natural ordering). Vì vậy rất khó để vừa có quy tắc:
+- by title then cost
+và
+- by cost then title
+trong cùng một compareTo().
+
+Muốn có nhiều cách sắp xếp khác nhau thì dùng Comparator sẽ phù hợp hơn.
+
+7. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+
+Nếu DVD có quy tắc riêng, ví dụ:
+- theo title
+- rồi theo length giảm dần
+- rồi theo cost
+
+thì cách tốt nhất là tạo một Comparator riêng cho DigitalVideoDisc, ví dụ:
+- DigitalVideoDiscComparator
+
+Khi đó:
+- Media có thể vẫn dùng comparator chung.
+- DVD dùng comparator riêng khi cần.
+
+Cách này linh hoạt hơn nhiều so với Comparable, vì Comparable chỉ phù hợp với một thứ tự mặc định, còn Comparator cho phép tạo nhiều quy tắc khác nhau cho từng trường hợp.
