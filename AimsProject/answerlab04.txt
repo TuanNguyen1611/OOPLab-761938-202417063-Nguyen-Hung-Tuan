@@ -1,0 +1,25 @@
+1. Compare AWT and Swing
+
+- AWT sử dụng các component heavyweight vì chúng phụ thuộc vào hệ điều hành.
+- Swing sử dụng các component lightweight nên linh hoạt và đa nền tảng hơn.
+- Các component của Swing thường bắt đầu bằng chữ "J" như JFrame, JButton, JTextField.
+- Swing cung cấp nhiều component GUI hơn và hỗ trợ thay đổi giao diện (look and feel).
+- Cả AWT và Swing đều sử dụng cơ chế xử lý sự kiện thông qua listener và ActionEvent.
+
+2. GridLayout
+
+- GridLayout sắp xếp các component theo dạng lưới hình chữ nhật.
+- Tất cả các ô trong GridLayout có cùng kích thước.
+- Trong Lab04, GridLayout được sử dụng để hiển thị các media theo dạng ma trận.
+
+3. Event handling
+
+- Event handling được cài đặt thông qua ActionListener.
+- Phương thức actionPerformed() sẽ được gọi khi người dùng tương tác với component như button hoặc menu item.
+- Trong Lab04, ActionListener được dùng để xử lý các chức năng Add Book, Add CD, Add DVD và Play.
+
+4. Inheritance in Lab04
+
+- AddBookToStoreScreen, AddCompactDiscToStoreScreen và AddDigitalVideoDiscToStoreScreen kế thừa từ AddItemToStoreScreen.
+- Việc sử dụng kế thừa giúp tái sử dụng code giao diện chung như menu, header và các text field cơ bản.
+- Điều này giúp giảm trùng lặp code và dễ bảo trì chương trình hơn.
