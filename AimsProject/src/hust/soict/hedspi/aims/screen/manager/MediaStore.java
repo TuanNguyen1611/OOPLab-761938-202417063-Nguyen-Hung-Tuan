@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.screen.manager;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -13,11 +14,11 @@ public class MediaStore extends JPanel {
     public MediaStore(Media media) {
         this.media = media;
 
-        setPreferredSize(new Dimension(300, 200));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        setPreferredSize(new Dimension(300, 200));
 
         JLabel title = new JLabel(media.getTitle());
-        title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 15));
         title.setAlignmentX(CENTER_ALIGNMENT);
 
         JLabel cost = new JLabel(media.getCost() + " $");
@@ -30,14 +31,24 @@ public class MediaStore extends JPanel {
             JButton playButton = new JButton("Play");
 
             playButton.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Playing: " + media.getTitle(),
-                        "Play",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
+                try {
+                    ((Playable) media).play();
 
-                ((Playable) media).play();
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Playing: " + media.getTitle(),
+                            "Play",
+                            JOptionPane.INFORMATION_MESSAGE
+                    );
+
+                } catch (PlayerException ex) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            ex.getMessage(),
+                            "Play Error",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
             });
 
             container.add(playButton);
@@ -48,7 +59,5 @@ public class MediaStore extends JPanel {
         add(cost);
         add(container);
         add(Box.createVerticalGlue());
-
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 }

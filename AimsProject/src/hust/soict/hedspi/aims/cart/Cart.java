@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.cart;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -106,7 +106,11 @@ public class Cart {
 
     public void playMedia(Media media) {
         if (media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (PlayerException e) {
+                System.err.println(e.getMessage());
+            }
         } else {
             System.out.println("This media cannot be played.");
         }
