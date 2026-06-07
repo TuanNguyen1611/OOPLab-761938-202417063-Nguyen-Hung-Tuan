@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER"
+      prefHeight="768.0"
+      prefWidth="1024.0"
+      spacing="10.0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml">
+
+    <padding>
+        <Insets left="20.0"/>
+    </padding>
+
+    <HBox alignment="CENTER" prefHeight="100.0">
+        <Label text="AIMS" style="-fx-font-size: 50px; -fx-text-fill: #004cff;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="View Cart"
+                prefWidth="100.0"
+                prefHeight="50.0"
+                onAction="#btnViewCartPressed">
+            <HBox.margin>
+                <Insets right="20.0"/>
+            </HBox.margin>
+        </Button>
+    </HBox>
+
+    <ScrollPane prefWidth="1024.0" prefHeight="760.0">
+        <GridPane fx:id="gridPane"
+                  prefWidth="0.0"
+                  prefHeight="0.0"
+                  hgap="10.0"
+                  vgap="10.0"/>
+    </ScrollPane>
+
+</VBox>

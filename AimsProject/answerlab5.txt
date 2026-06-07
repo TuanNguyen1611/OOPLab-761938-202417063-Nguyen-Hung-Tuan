@@ -1,0 +1,33 @@
+Câu 1: So sánh Swing và AWT
+* AWT sử dụng Frame làm cửa sổ chính, còn Swing sử dụng JFrame.
+* Các thành phần của Swing thường có chữ J đứng trước:
+  * Label -> JLabel
+  * Button -> JButton
+  * TextField -> JTextField
+  * Panel -> JPanel
+* AWT là heavyweight component (phụ thuộc vào hệ điều hành).
+* Swing là lightweight component (được viết chủ yếu bằng Java).
+* Swing có nhiều thành phần hơn và giao diện đẹp hơn AWT.
+Câu 2: Tại sao không thêm trực tiếp JComponent vào JFrame?
+Các thành phần Swing phải được thêm vào content pane của JFrame thay vì thêm trực tiếp vào JFrame.
+Content pane có nhiệm vụ chứa, sắp xếp và quản lý bố cục của các thành phần giao diện.
+Câu 3: ObservableList dùng để làm gì?
+ObservableList là danh sách có khả năng theo dõi sự thay đổi dữ liệu.
+Khi thêm, xóa hoặc sửa dữ liệu trong ObservableList thì TableView sẽ tự động cập nhật mà không cần refresh thủ công.
+Câu 4: ChangeListener dùng để làm gì?
+ChangeListener được dùng để lắng nghe sự thay đổi của một giá trị.
+Trong bài lab này nó được dùng để:
+* Theo dõi item được chọn trong TableView.
+* Theo dõi nội dung ô Filter.
+* Cập nhật nút Play, Remove và dữ liệu hiển thị.
+Câu 5: Khác nhau giữa List và ObservableList
+List:
+* Chỉ dùng để lưu dữ liệu.
+* Không thông báo khi dữ liệu thay đổi.
+ObservableList:
+* Lưu dữ liệu.
+* Thông báo khi dữ liệu thay đổi.
+* Thường dùng với JavaFX TableView.
+Câu 6: Điều gì xảy ra nếu không bắt PlayerException?
+Nếu không sử dụng try-catch hoặc throws để xử lý PlayerException thì chương trình có thể bị lỗi khi chạy và hiển thị thông báo ngoại lệ.
+Vì vậy cần bắt ngoại lệ bằng try-catch hoặc khai báo throws để chương trình hoạt động an toàn hơn.
